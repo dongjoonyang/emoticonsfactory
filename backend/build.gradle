@@ -1,0 +1,48 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.1' // 정식 릴리즈 버전으로 변경 (안정성)
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.emoticonsfactory'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		// 설치하신 버전이 21이라면 21로, 17이라면 17로 맞추세요.
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+// Lombok 설정을 위해 추가
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// 1. Web: REST API 개발을 위한 핵심 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// 2. JPA: 자바 객체와 DB 테이블을 연결 (ORM)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// 3. H2: 학습 및 테스트용 인메모리 DB
+	runtimeOnly 'com.h2database:h2'
+
+	// 4. Lombok: 코드를 깔끔하게 줄여주는 도구 (Getter, Setter 자동 생성)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
