@@ -47,21 +47,21 @@
   flex-shrink: 0;
 }
 
-.formInputs {
+.formColumns {
+  display: flex;
+  flex: 1;
+}
+
+.inputsColumn {
   display: flex;
   flex-direction: column;
   gap: 4px;
   flex: 1;
+  min-width: 0;
 }
 
-.topRow {
+.namePasswordRow {
   display: flex;
-  gap: 0;
-}
-
-.namePasswordGroup {
-  display: flex;
-  flex: 1;
 }
 
 .inputName {
@@ -104,7 +104,7 @@
 
 .submitButton {
   width: 117px;
-  height: 70px;
+  align-self: stretch;
   background: #fff;
   border: 1px solid #ffd6d6;
   font-family: 'DungGeunMo', sans-serif;
@@ -127,7 +127,7 @@
   font-size: 14px;
   color: #939393;
   outline: none;
-  width: calc(100% - 117px);
+  width: 100%;
 }
 
 .inputMessage::placeholder {

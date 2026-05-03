@@ -48,9 +48,9 @@ export default function WhatFriendsSay() {
 
       <div className={styles.formArea}>
         <span className={styles.sayLabel}>Say</span>
-        <div className={styles.formInputs}>
-          <div className={styles.topRow}>
-            <div className={styles.namePasswordGroup}>
+        <div className={styles.formColumns}>
+          <div className={styles.inputsColumn}>
+            <div className={styles.namePasswordRow}>
               <input
                 className={styles.inputName}
                 type="text"
@@ -68,18 +68,18 @@ export default function WhatFriendsSay() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button className={styles.submitButton} onClick={handleSubmit}>
-              작성
-            </button>
+            <input
+              className={styles.inputMessage}
+              type="text"
+              placeholder="일촌과 나누고 싶은 이야기를 남겨보세요!(최대 25자)"
+              maxLength={25}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
           </div>
-          <input
-            className={styles.inputMessage}
-            type="text"
-            placeholder="일촌과 나누고 싶은 이야기를 남겨보세요!(최대 25자)"
-            maxLength={25}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
+          <button className={styles.submitButton} onClick={handleSubmit}>
+            작성
+          </button>
         </div>
       </div>
 
