@@ -1,0 +1,190 @@
+.section {
+  padding: 28px 37px 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  color: #00aeab;
+  white-space: nowrap;
+}
+
+.subtitle {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 20px;
+  color: #939393;
+  white-space: nowrap;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #000;
+  margin-bottom: 0;
+}
+
+.formArea {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #fae6e6;
+  padding: 12px 14px;
+}
+
+.sayLabel {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 20px;
+  color: #3c3c3c;
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.topRow {
+  display: flex;
+  gap: 0;
+}
+
+.namePasswordGroup {
+  display: flex;
+  flex: 1;
+}
+
+.inputName {
+  flex: 1;
+  height: 34px;
+  border: none;
+  border-top: 1px solid #ffd6d6;
+  border-bottom: 1px solid #ffd6d6;
+  border-left: 1px solid #ffd6d6;
+  border-right: 1px solid #ffd6d6;
+  background: url('data:image/png;base64,') no-repeat;
+  padding: 0 8px;
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 14px;
+  color: #939393;
+  outline: none;
+}
+
+.inputName::placeholder {
+  color: #939393;
+}
+
+.inputPassword {
+  flex: 1;
+  height: 34px;
+  border: none;
+  border-top: 1px solid #ffd6d6;
+  border-bottom: 1px solid #ffd6d6;
+  border-right: 1px solid #ffd6d6;
+  padding: 0 8px;
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 14px;
+  color: #939393;
+  outline: none;
+}
+
+.inputPassword::placeholder {
+  color: #939393;
+}
+
+.submitButton {
+  width: 117px;
+  height: 70px;
+  background: #fff;
+  border: 1px solid #ffd6d6;
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 14px;
+  color: #494949;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.submitButton:hover {
+  background: #ffd6d6;
+}
+
+.inputMessage {
+  height: 34px;
+  border: 1px solid #ffd6d6;
+  background: #fff;
+  padding: 0 8px;
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 14px;
+  color: #939393;
+  outline: none;
+  width: calc(100% - 117px);
+}
+
+.inputMessage::placeholder {
+  color: #939393;
+}
+
+.commentList {
+  margin-top: 0;
+}
+
+.commentItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentDivider {
+  width: 100%;
+  height: 1px;
+  background: #000;
+}
+
+.commentRow {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  gap: 6px;
+}
+
+.bullet {
+  font-size: 14px;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.commentText {
+  font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+  font-size: 15px;
+  color: #797979;
+  flex: 1;
+}
+
+.commentActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+  font-size: 14px;
+  color: #797979;
+  cursor: pointer;
+  padding: 0;
+}
+
+.actionButton:hover {
+  text-decoration: underline;
+}

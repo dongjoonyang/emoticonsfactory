@@ -1,0 +1,152 @@
+.panel {
+  position: relative;
+  flex-shrink: 0;
+  width: 553px;
+  height: 894px;
+  background: #fffdfe;
+  border: 1px solid #000;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* visitor counter: absolute from panel origin (51,42) → page positions (170,87) */
+.counter {
+  position: absolute;
+  top: 41px;
+  left: 119px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.counterLabel {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 20px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.todayCount {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 24px;
+  color: #d90000;
+  white-space: nowrap;
+}
+
+.counterDivider {
+  width: 2px;
+  height: 18px;
+  background: #000;
+  margin: 0 4px;
+}
+
+.totalCount {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 24px;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* middle gray card: page(74,129) → panel(23,87) */
+.middleCard {
+  position: absolute;
+  top: 87px;
+  left: 23px;
+  width: 510px;
+  height: 779px;
+  background: #e9e8ea;
+  border: 1px solid #000;
+  border-radius: 19px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* inner white card: page(85,147) → middleCard(11,18) */
+.innerCard {
+  position: absolute;
+  top: 18px;
+  left: 11px;
+  width: 487px;
+  height: 744px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 19px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* profile card: page(123,189) → innerCard(38,42) */
+.profileCard {
+  position: absolute;
+  top: 42px;
+  left: 38px;
+  width: 410px;
+  height: 392px;
+  background: #fff;
+  border: 1px solid #bababa;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* TODAY IS box: page(123,603) → innerCard(38,456) */
+.todayIs {
+  position: absolute;
+  top: 456px;
+  left: 38px;
+  width: 410px;
+  height: 54px;
+  background: #fff;
+  border: 1px solid #aeaeae;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+}
+
+.todayIsLabel {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 24px;
+  color: #000;
+}
+
+.todayIsMood {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 24px;
+  color: #000;
+}
+
+/* contact: page(127,757) → innerCard(42,610) */
+.contact {
+  position: absolute;
+  top: 610px;
+  left: 42px;
+  width: 397px;
+}
+
+.contactDivider {
+  width: 100%;
+  height: 1px;
+  background: #000;
+  margin-bottom: 28px;
+}
+
+.ownerName {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 26px;
+  color: #0d007f;
+  white-space: nowrap;
+  margin-bottom: 6px;
+}
+
+.email {
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 24px;
+  color: #e39000;
+  white-space: nowrap;
+}

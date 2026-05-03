@@ -1,0 +1,48 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #c8bfb0;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* main container: page(28,25) width=1599, height=932 */
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+  margin: 25px 28px;
+  min-height: 932px;
+  background: rgba(255, 253, 254, 0.5);
+  border: 1px solid #000;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  /* side panel starts at page(51) = 51-28=23px from container */
+  padding: 17px 120px 21px 23px;
+  overflow: visible;
+}
+
+/* 전체 콘텐츠 너비 ≈ 1738px (컨테이너 + 네비탭 돌출) */
+/* MacBook 14" 1512px */
+@media (max-width: 1739px) {
+  .container {
+    zoom: 0.82;
+  }
+}
+
+/* MacBook 13" 1280px */
+@media (max-width: 1399px) {
+  .container {
+    zoom: 0.73;
+  }
+}

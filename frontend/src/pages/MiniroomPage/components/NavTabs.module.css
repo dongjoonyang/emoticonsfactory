@@ -1,0 +1,27 @@
+.tabs {
+  position: absolute;
+  right: -110px;
+  top: 82px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tab {
+  width: 110px;
+  height: 50px;
+  border: 1px solid #000;
+  border-radius: 0 10px 10px 0;
+  background: #fff;
+  font-family: 'DungGeunMo', sans-serif;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  padding: 0;
+}
+
+.tabActive {
+  background: #1a7c7c;
+  color: #fff;
+}
