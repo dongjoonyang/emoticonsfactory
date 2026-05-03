@@ -50,6 +50,7 @@
 .formColumns {
   display: flex;
   flex: 1;
+  gap: 5px;
 }
 
 .inputsColumn {
@@ -62,6 +63,7 @@
 
 .namePasswordRow {
   display: flex;
+  gap: 5px;
 }
 
 .inputName {
@@ -72,7 +74,6 @@
   border-bottom: 1px solid #ffd6d6;
   border-left: 1px solid #ffd6d6;
   border-right: 1px solid #ffd6d6;
-  background: url('data:image/png;base64,') no-repeat;
   padding: 0 8px;
   font-family: 'DungGeunMo', sans-serif;
   font-size: 14px;
