@@ -1,0 +1,5 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "cd backend && ./gradlew bootRun --args='--spring.profiles.active=prod'"
