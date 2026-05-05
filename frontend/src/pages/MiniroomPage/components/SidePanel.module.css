@@ -144,7 +144,7 @@
 /* contact: page(127,757) → innerCard(42,610) */
 .contact {
   position: absolute;
-  top: 610px;
+  bottom: 30px;
   left: 42px;
   width: 397px;
 }
