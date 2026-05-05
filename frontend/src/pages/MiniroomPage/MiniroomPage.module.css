@@ -47,6 +47,11 @@
   }
 }
 
+/* 플로팅 버튼 — 데스크탑에서는 숨김 */
+.floatingButton {
+  display: none;
+}
+
 /* 모바일 */
 @media (max-width: 768px) {
   .container {
@@ -60,5 +65,27 @@
     min-height: 100vh;
     gap: 0;
     background: #fffdfe;
+    overflow-x: hidden;
+  }
+
+  .floatingButton {
+    display: block;
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    z-index: 100;
+    background: #00aeab;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 22px;
+    font-family: 'DungGeunMo', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .floatingButton:active {
+    background: #009896;
   }
 }

@@ -11,7 +11,13 @@
 
 @media (max-width: 768px) {
   .panel {
-    display: none;
+    width: 553px;
+    height: 894px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+    zoom: 0.68;
   }
 }
 

@@ -85,7 +85,7 @@ export default function WhatFriendsSay() {
 
       <div className={styles.divider} />
 
-      <div className={styles.formArea}>
+      <div id="comment-form" className={styles.formArea}>
         <span className={styles.sayLabel}>Say</span>
         <div className={styles.formColumns}>
           <div className={styles.inputsColumn}>

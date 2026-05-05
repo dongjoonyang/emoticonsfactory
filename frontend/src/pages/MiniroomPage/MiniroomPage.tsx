@@ -10,6 +10,10 @@ const PROFILE_IMAGE = profileImage;
 const ROOM_IMAGE = roomImage;
 
 export default function MiniroomPage() {
+  const scrollToComment = () => {
+    document.getElementById('comment-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className={styles.page}>
       <img className={styles.background} src={BG_IMAGE} alt="" aria-hidden="true" />
@@ -24,6 +28,9 @@ export default function MiniroomPage() {
         />
         <MainPanel roomImage={ROOM_IMAGE} siteUrl="https://mungfriends.com" />
       </div>
+      <button className={styles.floatingButton} onClick={scrollToComment}>
+        댓글 쓰기
+      </button>
     </div>
   );
 }
