@@ -46,3 +46,19 @@
     zoom: 0.73;
   }
 }
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .container {
+    zoom: 1;
+    flex-direction: column;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    min-height: 100vh;
+    gap: 0;
+    background: #fffdfe;
+  }
+}

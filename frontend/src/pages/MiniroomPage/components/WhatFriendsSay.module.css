@@ -213,3 +213,66 @@
   outline: none;
   flex-shrink: 0;
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 16px 16px 0;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .sayLabel {
+    display: none;
+  }
+
+  .formArea {
+    padding: 12px;
+  }
+
+  .formColumns {
+    flex-direction: column;
+  }
+
+  .inputName,
+  .inputPassword {
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .inputMessage {
+    height: 44px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .submitButton {
+    width: 100%;
+    height: 44px;
+  }
+
+  .commentText {
+    font-size: 13px;
+    word-break: break-all;
+  }
+
+  .actionButton {
+    font-size: 13px;
+  }
+
+  .inlineInput {
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .inlinePassword {
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+  }
+}

@@ -100,3 +100,42 @@
   object-position: center top;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 16px 0;
+    margin-bottom: 12px;
+  }
+
+  .siteTitle {
+    font-size: 20px;
+  }
+
+  .siteUrl {
+    font-size: 12px;
+  }
+
+  .outerCard {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    height: auto;
+  }
+
+  .innerCard {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .miniRoomImageWrap {
+    height: 180px;
+  }
+}
