@@ -233,6 +233,7 @@
 
   .formArea {
     padding: 12px;
+    margin-bottom: 10px;
   }
 
   .formColumns {
@@ -251,14 +252,14 @@
   .inputName,
   .inputPassword {
     width: 100%;
-    height: 44px;
+    height: 45px;
     font-size: 16px;
     box-sizing: border-box;
     border: 1px solid #ffd6d6;
   }
 
   .inputMessage {
-    height: 44px;
+    height: 45px;
     font-size: 16px;
     box-sizing: border-box;
     width: 100%;
@@ -266,7 +267,7 @@
 
   .submitButton {
     width: 100%;
-    height: 44px;
+    height: 45px;
     margin-top: 4px;
   }
 
@@ -280,13 +281,17 @@
   }
 
   .inlineInput {
-    height: 40px;
+    height: 45px;
     font-size: 16px;
   }
 
   .inlinePassword {
     width: 80px;
-    height: 40px;
+    height: 45px;
     font-size: 16px;
+  }
+
+  .section {
+    padding-bottom: 32px;
   }
 }
