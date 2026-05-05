@@ -189,3 +189,27 @@
 .actionButton:hover {
   text-decoration: underline;
 }
+
+.inlineInput {
+  flex: 1;
+  height: 26px;
+  border: 1px solid #ffd6d6;
+  padding: 0 6px;
+  font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+  font-size: 14px;
+  color: #3c3c3c;
+  outline: none;
+  min-width: 0;
+}
+
+.inlinePassword {
+  width: 90px;
+  height: 26px;
+  border: 1px solid #ffd6d6;
+  padding: 0 6px;
+  font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+  font-size: 14px;
+  color: #3c3c3c;
+  outline: none;
+  flex-shrink: 0;
+}

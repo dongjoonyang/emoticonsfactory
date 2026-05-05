@@ -1,40 +1,79 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getComments, createComment, editComment, deleteComment, CommentResponse } from '../../../shared/api/comments';
 import styles from './WhatFriendsSay.module.css';
 
-interface Comment {
-  id: number;
-  content: string;
-  author: string;
-  date: string;
-}
-
-const INITIAL_COMMENTS: Comment[] = [
-  { id: 1, content: '안녕하세요', author: '멍랑이', date: '2026-04-27' },
-  { id: 2, content: '반가워요', author: '일촌명', date: '2026-04-28' },
-];
+type ActiveAction = { type: 'edit' | 'delete'; id: number } | null;
 
 export default function WhatFriendsSay() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [comments, setComments] = useState<Comment[]>(INITIAL_COMMENTS);
+  const [comments, setComments] = useState<CommentResponse[]>([]);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = () => {
-    if (!name.trim() || !message.trim()) return;
-    const newComment: Comment = {
-      id: Date.now(),
-      content: message.slice(0, 25),
-      author: name.slice(0, 10),
-      date: new Date().toISOString().slice(0, 10),
-    };
-    setComments((prev) => [...prev, newComment]);
-    setName('');
-    setPassword('');
-    setMessage('');
+  const [activeAction, setActiveAction] = useState<ActiveAction>(null);
+  const [actionPassword, setActionPassword] = useState('');
+  const [editContent, setEditContent] = useState('');
+
+  useEffect(() => {
+    getComments().then(setComments).catch(console.error);
+  }, []);
+
+  const handleSubmit = async () => {
+    if (!name.trim() || !password.trim() || !message.trim()) return;
+    setSubmitting(true);
+    try {
+      const created = await createComment(name, password, message);
+      setComments((prev) => [...prev, created]);
+      setName('');
+      setPassword('');
+      setMessage('');
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  const handleDelete = (id: number) => {
-    setComments((prev) => prev.filter((c) => c.id !== id));
+  const startEdit = (comment: CommentResponse) => {
+    setActiveAction({ type: 'edit', id: comment.id });
+    setEditContent(comment.content);
+    setActionPassword('');
+  };
+
+  const startDelete = (id: number) => {
+    setActiveAction({ type: 'delete', id });
+    setActionPassword('');
+  };
+
+  const cancelAction = () => {
+    setActiveAction(null);
+    setActionPassword('');
+    setEditContent('');
+  };
+
+  const handleEditConfirm = async (id: number) => {
+    if (!editContent.trim() || !actionPassword.trim()) return;
+    try {
+      const updated = await editComment(id, actionPassword, editContent);
+      setComments((prev) => prev.map((c) => (c.id === id ? updated : c)));
+      cancelAction();
+    } catch (e: any) {
+      if (e?.response?.status === 403) alert('비밀번호가 틀렸습니다.');
+      else console.error(e);
+    }
+  };
+
+  const handleDeleteConfirm = async (id: number) => {
+    if (!actionPassword.trim()) return;
+    try {
+      await deleteComment(id, actionPassword);
+      setComments((prev) => prev.filter((c) => c.id !== id));
+      cancelAction();
+    } catch (e: any) {
+      if (e?.response?.status === 403) alert('비밀번호가 틀렸습니다.');
+      else console.error(e);
+    }
   };
 
   return (
@@ -77,33 +116,78 @@ export default function WhatFriendsSay() {
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
-          <button className={styles.submitButton} onClick={handleSubmit}>
-            작성
+          <button className={styles.submitButton} onClick={handleSubmit} disabled={submitting}>
+            {submitting ? '저장 중...' : '작성'}
           </button>
         </div>
       </div>
 
       <div className={styles.commentList}>
-        {comments.map((comment) => (
-          <div key={comment.id} className={styles.commentItem}>
-            <div className={styles.commentDivider} />
-            <div className={styles.commentRow}>
-              <span className={styles.bullet}>•</span>
-              <span className={styles.commentText}>
-                {comment.content} ({comment.author}) {comment.date}
-              </span>
-              <div className={styles.commentActions}>
-                <button className={styles.actionButton}>수정</button>
-                <button
-                  className={styles.actionButton}
-                  onClick={() => handleDelete(comment.id)}
-                >
-                  삭제
-                </button>
-              </div>
+        {comments.map((comment) => {
+          const isEditing = activeAction?.type === 'edit' && activeAction.id === comment.id;
+          const isDeleting = activeAction?.type === 'delete' && activeAction.id === comment.id;
+
+          return (
+            <div key={comment.id} className={styles.commentItem}>
+              <div className={styles.commentDivider} />
+
+              {isEditing ? (
+                <div className={styles.commentRow}>
+                  <span className={styles.bullet}>•</span>
+                  <input
+                    className={styles.inlineInput}
+                    type="text"
+                    maxLength={25}
+                    value={editContent}
+                    onChange={(e) => setEditContent(e.target.value)}
+                  />
+                  <input
+                    className={styles.inlinePassword}
+                    type="password"
+                    placeholder="비밀번호"
+                    maxLength={12}
+                    value={actionPassword}
+                    onChange={(e) => setActionPassword(e.target.value)}
+                  />
+                  <div className={styles.commentActions}>
+                    <button className={styles.actionButton} onClick={() => handleEditConfirm(comment.id)}>확인</button>
+                    <button className={styles.actionButton} onClick={cancelAction}>취소</button>
+                  </div>
+                </div>
+              ) : isDeleting ? (
+                <div className={styles.commentRow}>
+                  <span className={styles.bullet}>•</span>
+                  <span className={styles.commentText}>
+                    {comment.content} ({comment.author}) {comment.date}
+                  </span>
+                  <input
+                    className={styles.inlinePassword}
+                    type="password"
+                    placeholder="비밀번호"
+                    maxLength={12}
+                    value={actionPassword}
+                    onChange={(e) => setActionPassword(e.target.value)}
+                  />
+                  <div className={styles.commentActions}>
+                    <button className={styles.actionButton} onClick={() => handleDeleteConfirm(comment.id)}>확인</button>
+                    <button className={styles.actionButton} onClick={cancelAction}>취소</button>
+                  </div>
+                </div>
+              ) : (
+                <div className={styles.commentRow}>
+                  <span className={styles.bullet}>•</span>
+                  <span className={styles.commentText}>
+                    {comment.content} ({comment.author}) {comment.date}
+                  </span>
+                  <div className={styles.commentActions}>
+                    <button className={styles.actionButton} onClick={() => startEdit(comment)}>수정</button>
+                    <button className={styles.actionButton} onClick={() => startDelete(comment.id)}>삭제</button>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
         {comments.length > 0 && <div className={styles.commentDivider} />}
       </div>
     </div>

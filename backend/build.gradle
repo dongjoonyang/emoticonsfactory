@@ -32,12 +32,18 @@ dependencies {
 	// 2. JPA: 자바 객체와 DB 테이블을 연결 (ORM)
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	// 3. H2: 학습 및 테스트용 인메모리 DB
+	// 3. H2: 로컬 개발용 DB
 	runtimeOnly 'com.h2database:h2'
+
+	// 6. PostgreSQL: 운영 환경 DB
+	runtimeOnly 'org.postgresql:postgresql'
 
 	// 4. Lombok: 코드를 깔끔하게 줄여주는 도구 (Getter, Setter 자동 생성)
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// 5. BCrypt: 비밀번호 해시
+	implementation 'org.springframework.security:spring-security-crypto'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
