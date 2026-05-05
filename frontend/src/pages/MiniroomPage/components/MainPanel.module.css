@@ -138,4 +138,16 @@
   .miniRoomImageWrap {
     height: 180px;
   }
+
+  .miniRoomTitle {
+    font-size: 20px;
+  }
+
+  .miniRoomSubtitle {
+    font-size: 14px;
+  }
+
+  .siteTitle {
+    font-size: 18px;
+  }
 }
