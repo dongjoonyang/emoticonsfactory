@@ -110,8 +110,8 @@ export default function WhatFriendsSay() {
             <input
               className={styles.inputMessage}
               type="text"
-              placeholder="일촌과 나누고 싶은 이야기를 남겨보세요!(최대 25자)"
-              maxLength={25}
+              placeholder="일촌과 나누고 싶은 이야기를 남겨보세요!(최대 100자)"
+              maxLength={100}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />

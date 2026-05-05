@@ -21,7 +21,7 @@ public class Comment {
     @Column(nullable = false)
     private String password;
 
-    @Column(length = 25, nullable = false)
+    @Column(length = 100, nullable = false)
     private String content;
 
     private LocalDate createdAt;
