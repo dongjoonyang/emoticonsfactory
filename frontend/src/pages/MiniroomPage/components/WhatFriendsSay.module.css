@@ -239,21 +239,35 @@
     flex-direction: column;
   }
 
+  .inputsColumn {
+    width: 100%;
+  }
+
+  .namePasswordRow {
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .inputName,
   .inputPassword {
+    width: 100%;
     height: 44px;
     font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ffd6d6;
   }
 
   .inputMessage {
     height: 44px;
     font-size: 16px;
     box-sizing: border-box;
+    width: 100%;
   }
 
   .submitButton {
     width: 100%;
     height: 44px;
+    margin-top: 4px;
   }
 
   .commentText {
